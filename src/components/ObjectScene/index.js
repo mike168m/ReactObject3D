@@ -5,13 +5,20 @@ import React3 from "react-three-renderer";
 import ObjectModel from 'react-three-renderer-objects';
 import exampleModel from "../../assets/TechnicLEGO_CAR_1.obj";
 import exampleTexture from "../../assets/TechnicLEGO_CAR_1.mtl";
+import rubixModel from '../../assets/rubix.obj';
+import rubixTex from '../../assets/rubix.mtl';
+
+
+
+window.model_obj = {};
+window.model_tex = {};
 
 class ObjectScene extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      cameraPosition: new THREE.Vector3(0, 300, 750),
+      cameraPosition: new THREE.Vector3(0, 300, -750),
       groupRotation: new THREE.Euler(0, 0, 0),
       scene: {}
     };
@@ -71,6 +78,19 @@ class ObjectScene extends React.Component {
       document.removeEventListener('mouseup', this.onDocumentMouseUp, false);
       document.removeEventListener('mouseout', this.onDocumentMouseOut, false);
     };
+
+    console.log("href: " + window.location.href)
+
+    if (window.location.href.includes('other')) {
+      window.model_obj = rubixModel
+      window.model_tex = rubixTex
+    } else {
+      window.model_obj = exampleModel;
+      window.model_tex = exampleTexture;
+    }
+
+    console.log(window.model_obj, window.model_tex);
+
   }
 
   updateScene = () => {
@@ -94,7 +114,6 @@ class ObjectScene extends React.Component {
 
     let width = window.innerWidth;
     let height = window.innerHeight;
-
     return (
       <React3
         mainCamera="camera"
@@ -181,8 +200,8 @@ class ObjectScene extends React.Component {
           <group name="exampleGroup" rotation={this.state.groupRotation}>
             <ObjectModel
               name="exampleObject"
-              model={exampleModel}
-              material={exampleTexture}
+              model={window.model_obj}
+              material={window.model_tex}
               scene={this.state.scene}
               group="exampleGroup"
             />
