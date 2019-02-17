@@ -1,0 +1,25 @@
+{
+  "homepage": "https://brandonjurado.github.io/ReactObject3D/",
+  "name": "reactobject3d",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-scripts": "1.0.0",
+    "react-three-renderer": "^3.2.3",
+    "react-three-renderer-objects": "0.0.6",
+    "three": "0.86.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
+  }
+}
