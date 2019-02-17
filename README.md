@@ -1,2 +1,2 @@
 # ReactObject3D
-node_modules/
+Renders 3D Object Model
